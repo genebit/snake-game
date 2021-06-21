@@ -4,7 +4,7 @@ let fps = 15;
 
 let direction;
 
-let startingXPosition = 100;
+let startingXPosition = 400;
 let segments = 3;
 
 let xCoordinate = []
@@ -12,12 +12,6 @@ let xCoordinate = []
 function setup() {
   createCanvas(400, 400);
   frameRate(fps);
-
-  for (var index = 0; index < segments; index++) {
-      xCoordinate.push(index);
-      
-      rect(startingXPosition[index-25], height/2, 25, 25);
-  }
 }
 
 function draw() {
@@ -27,14 +21,6 @@ function draw() {
   
   fill(255);
   strokeWeight(1);
-  
-  // for (var index = 0; index < x)
-  rect(50, 50, 25, 25);
-  // rect(startingXPosition-25, height/2, 25, 25);
-  // rect(startingXPosition, height/2, 25, 25);
-  // rect(startingXPosition-25, height/2, 25, 25);
-
-  startingXPosition++;
 }
 
 function keyPressed() {
