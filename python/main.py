@@ -1,7 +1,7 @@
 import pygame
 import sys
 
-FPS = 15
+FPS = 2
 WINDOW_WIDTH = 400
 WINDOW_HEIGHT = 400
 
@@ -11,11 +11,13 @@ pygame.display.set_caption('Snake Game')
 
 clock = pygame.time.Clock()
 
-snakespeed = [5, 0]
-snake = pygame.Rect(0, 0, 10, 10)
-snake.center = (WINDOW_WIDTH/2, WINDOW_HEIGHT/2)
+snake = pygame.Rect(100, WINDOW_HEIGHT/2, 25, 25)
+x_update = 0
+y_update = 0
+movelength = 25
+direction = 'RIGHT'
 
-direction = 'right'
+gameover = False
 
 while True:
     for event in pygame.event.get():
@@ -24,19 +26,33 @@ while True:
             sys.exit()
 
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP and not direction == 'down':
-                direction = 'up'
-            if event.key == pygame.K_DOWN and not direction == 'up':
-                direction = 'down'
-            if event.key == pygame.K_LEFT and not direction == 'right':
-                direction = 'left'
-            if event.key == pygame.K_RIGHT and not direction == 'left':
-                direction = 'right'
-
+            if event.key == pygame.K_UP and not direction == 'DOWN':
+                direction = 'UP'
+            if event.key == pygame.K_DOWN and not direction == 'UP':
+                direction = 'DOWN'
+            if event.key == pygame.K_LEFT and not direction == 'RIGHT':
+                direction = 'LEFT'
+            if event.key == pygame.K_RIGHT and not direction == 'LEFT':
+                direction = 'RIGHT'
+    
+    if direction == 'UP':
+        x_update = 0
+        y_update = -movelength
+    if direction == 'DOWN':
+        x_update = 0
+        y_update = movelength
+    if direction == 'LEFT':
+        x_update = -movelength
+        y_update = 0
+    if direction == 'RIGHT':
+        x_update = movelength
+        y_update = 0
+    
     window.fill((20, 20, 20))
-
-    snake = snake.move(snakespeed)
-    pygame.draw.rect(window, (255, 255, 255), snake, 3)
-
+    
+    snake.x += x_update
+    snake.y += y_update
+    pygame.draw.rect(window, (255, 255, 255), snake, 2)
+    
     clock.tick(FPS)
     pygame.display.update()
