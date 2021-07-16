@@ -31,7 +31,7 @@ if x_grid != [] and y_grid != []:
     y_picker = random.randint(0, len(y_grid)-1)
     
     food = pygame.Rect(x_grid[x_picker], y_grid[y_picker], 25, 25)
-
+    
     print('Food is at:', food.x, food.y)
 
 gameover = False
@@ -65,7 +65,7 @@ while True:
         x_update = movelength
         y_update = 0
     
-    window.fill((20, 20, 20))
+    window.fill((26, 26, 26))
     
     snake.x += x_update
     snake.y += y_update
