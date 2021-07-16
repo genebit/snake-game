@@ -1,5 +1,6 @@
 import pygame
 import sys
+import random
 
 FPS = 8
 WINDOW_WIDTH = 400
@@ -17,7 +18,21 @@ y_update = 0
 movelength = 25
 direction = 'RIGHT'
 
-food = pygame.Rect(0, 0, 25, 25)
+x_grid = []
+y_grid = []
+for x in range(0, WINDOW_WIDTH, 25):
+    x_grid.append(x)
+    for y in range(0, WINDOW_HEIGHT, 25):
+        y_grid.append(y)        
+
+if x_grid != [] and y_grid != []:
+    # Pick a random position
+    x_picker = random.randint(0, len(x_grid)-1)
+    y_picker = random.randint(0, len(y_grid)-1)
+    
+    food = pygame.Rect(x_grid[x_picker], y_grid[y_picker], 25, 25)
+
+    print('Food is at:', food.x, food.y)
 
 gameover = False
 
@@ -55,6 +70,8 @@ while True:
     snake.x += x_update
     snake.y += y_update
     pygame.draw.rect(window, (255, 255, 255), snake, 2)
+    
+    pygame.draw.rect(window, (201, 62, 62), food, 2)
     
     clock.tick(FPS)
     pygame.display.update()
