@@ -1,7 +1,7 @@
 import pygame
 import sys
 
-FPS = 2
+FPS = 8
 WINDOW_WIDTH = 400
 WINDOW_HEIGHT = 400
 
@@ -16,6 +16,8 @@ x_update = 0
 y_update = 0
 movelength = 25
 direction = 'RIGHT'
+
+food = pygame.Rect(0, 0, 25, 25)
 
 gameover = False
 
