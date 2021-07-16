@@ -6,14 +6,14 @@ window = pygame.display.set_mode((400, 400))
 snake = [None, None, None]
 
 def draw_snake():
-    snake_x = 300
+    snake_x_update = 300
 
     for i in range(0, len(snake)):
         
-        snake[i] = pygame.Rect(snake_x, window.get_height()/2, 30, 30)
-        snake_x -= 30
-        
-        snake[i] = pygame.draw.rect(window, (255, 255, 255), snake[i], 2)
+        snake[i] = pygame.Rect(snake_x_update, window.get_height()/2, 30, 30)
+        snake_x_update -= 30   
+
+        pygame.draw.rect(window, (255, 255, 255), snake[i], 2)
 
 while True:
     for event in pygame.event.get():
