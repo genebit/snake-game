@@ -36,42 +36,46 @@ if x_grid != [] and y_grid != []:
 
 gameover = False
 
-while True:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
+def main():
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
 
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP and not direction == 'DOWN':
-                direction = 'UP'
-            if event.key == pygame.K_DOWN and not direction == 'UP':
-                direction = 'DOWN'
-            if event.key == pygame.K_LEFT and not direction == 'RIGHT':
-                direction = 'LEFT'
-            if event.key == pygame.K_RIGHT and not direction == 'LEFT':
-                direction = 'RIGHT'
-    
-    if direction == 'UP':
-        x_update = 0
-        y_update = -movelength
-    if direction == 'DOWN':
-        x_update = 0
-        y_update = movelength
-    if direction == 'LEFT':
-        x_update = -movelength
-        y_update = 0
-    if direction == 'RIGHT':
-        x_update = movelength
-        y_update = 0
-    
-    window.fill((26, 26, 26))
-    
-    snake.x += x_update
-    snake.y += y_update
-    pygame.draw.rect(window, (255, 255, 255), snake, 2)
-    
-    pygame.draw.rect(window, (201, 62, 62), food, 2)
-    
-    clock.tick(FPS)
-    pygame.display.update()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_UP and not direction == 'DOWN':
+                    direction = 'UP'
+                if event.key == pygame.K_DOWN and not direction == 'UP':
+                    direction = 'DOWN'
+                if event.key == pygame.K_LEFT and not direction == 'RIGHT':
+                    direction = 'LEFT'
+                if event.key == pygame.K_RIGHT and not direction == 'LEFT':
+                    direction = 'RIGHT'
+        
+        if direction == 'UP':
+            x_update = 0
+            y_update = -movelength
+        if direction == 'DOWN':
+            x_update = 0
+            y_update = movelength
+        if direction == 'LEFT':
+            x_update = -movelength
+            y_update = 0
+        if direction == 'RIGHT':
+            x_update = movelength
+            y_update = 0
+        
+        window.fill((26, 26, 26))
+        
+        snake.x += x_update
+        snake.y += y_update
+        pygame.draw.rect(window, (255, 255, 255), snake, 2)
+        
+        pygame.draw.rect(window, (201, 62, 62), food, 2)
+        
+        clock.tick(FPS)
+        pygame.display.update()
+
+if __name__ == '__main__':
+    main()
