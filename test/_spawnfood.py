@@ -12,9 +12,8 @@ for x in range(0, window_width, 10):
     for y in range(0, window_height, 10):
         y_grid.append(y)        
 
-if x_grid != [] and y_grid != []:
-    # Pick a random position
-    x_picker = random.randint(0, len(x_grid)-1)
-    y_picker = random.randint(0, len(y_grid)-1)
+# Pick a random position
+x_picker = random.randint(0, len(x_grid)-1)
+y_picker = random.randint(0, len(y_grid)-1)
 
-    print('Spawn food at:', x_grid[x_picker], y_grid[y_picker])
+print('Spawned food at:', x_grid[x_picker], y_grid[y_picker])
